@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>sample</groupId>
+  <artifactId>AccuKnox</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+      <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <aspectj.version>1.9.22.1</aspectj.version> 
+    
+    
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <!-- parallel="methods" added in testng.xml file -->
+          <!-- <parallel>methods</parallel> -->
+          <!-- Use the defined properties here -->
+          <threadCount>${browserInstances}</threadCount>
+          <suiteXmlFiles>
+            <!-- You can add more than 1 XML files here also -->
+            <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+            <!--<suiteXmlFile>${suiteFile}</suiteXmlFile>-->
+            <suiteXmlFile>src/test/resources/runners/testng_Local.xml</suiteXmlFile>
+          </suiteXmlFiles>
+          <argLine>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          </argLine>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <!-- Selenium dependency -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.22.0</version>
+    </dependency>
+    
+    <!-- TestNG dependency -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.10.2</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- ExtentReports dependency -->
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.0.9</version>
+    </dependency>
+
+    <!-- JavaMail dependency -->
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+
+    <!-- Commons IO dependency -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.6</version>
+    </dependency>
+    
+    	<!-- https://mvnrepository.com/artifact/org.zeroturnaround/zt-zip -->
+		<dependency>
+			<groupId>org.zeroturnaround</groupId>
+			<artifactId>zt-zip</artifactId>
+			<version>1.14</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.34</version>
+    <scope>provided</scope>
+</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.5.14</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/io.fabric8/kubernetes-client -->
+<dependency>
+    <groupId>io.fabric8</groupId>
+    <artifactId>kubernetes-client</artifactId>
+    <version>6.13.1</version>
+</dependency>
+
+		
+  </dependencies>
+</project>
