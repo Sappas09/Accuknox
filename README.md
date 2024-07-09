@@ -44,6 +44,8 @@ minikube start
 
 ## Deploy Project using Kubernetes
 
+git clone https://github.com/Vengatesh-m/qa-test.git
+
 ```bash
 cd /qa-test/Deployment
 kubectl apply -f backend-deployment.yaml
